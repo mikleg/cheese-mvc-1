@@ -9,12 +9,14 @@
 <form method="post" style="max-width:600px;" th:object="${cheese}">
     <div class="form-group">
         <label th:for="name">Name</label>
-        <input class="form-control" th:value="${cheese.name}" name="name" />
+        <!--<input class="form-control" th:value="${cheese.name}" name="name" />-->
+        <input class="form-control" th:field="*{name}" />
         <span th:errors="*{name}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="description">Description</label>
-        <input class="form-control" th:value="${cheese.description}" name="description" />
+        <!--<input class="form-control" th:value="${cheese.description}" name="description" />-->
+        <input class="form-control" th:field="*{description}" />
         <span th:errors="*{description}" class="error"></span>
     </div>
     <input type="hidden" th:value="${cheese.cheeseId}" name="cheeseId" />
@@ -27,7 +29,7 @@
         </select>
     </div>
 
-    <input type="submit" value="Add Cheese" />
+    <input type="submit" value="Update Cheese" />
 </form>
 
 </body>

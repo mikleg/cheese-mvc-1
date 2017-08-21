@@ -16,6 +16,8 @@ public class Cheese {
     @Size(min=1, message = "Description must not be empty")
     private String description;
 
+    @NotNull
+
     private CheeseType type;
 
     private int cheeseId;
