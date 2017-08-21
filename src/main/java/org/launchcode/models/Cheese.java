@@ -1,5 +1,6 @@
 package org.launchcode.models;
 
+import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -14,14 +15,29 @@ public class Cheese {
 
     @NotNull
     @Size(min=1, message = "Description must not be empty")
+
     private String description;
 
     @NotNull
-
     private CheeseType type;
 
     private int cheeseId;
     private static int nextId = 1;
+
+    @NotNull
+    @DecimalMax("5")
+
+    private Integer rating;
+
+    public  void copy(Cheese obj)
+    {
+
+        this.name = obj.name;
+        this.description = obj.getDescription();
+        this.type = obj.getType();
+        this.rating = obj.getRating();
+
+    }
 
     public Cheese(String name, String description) {
         this();
@@ -32,6 +48,14 @@ public class Cheese {
     public Cheese() {
         cheeseId = nextId;
         nextId++;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
 
     public int getCheeseId() {
